@@ -29,7 +29,7 @@ A sleek, cyber-themed interactive dashboard designed to kill boredom instantly. 
 
 ## 📖 How to Use & Share
 
-1. Launch the [Live Web App](PASTE_YOUR_GITHUB_PAGES_LINK_HERE).
+1. Launch the [Live Web App](https://natashafernandez190-sudo.github.io/boredombuster/).
 2. Use the **Dynamic App Nodes** navbar to select your favorite entertainment channel (Cats, Dogs, Memes, Cars, Humans, or Trivia).
 3. Click the **"Generate Dopamine"** action button to refresh the frame with a new piece of content instantly.
 4. Use the integrated **One-Tap Share Bar** to instantly export funny facts, crazy trivia questions, or supercar specs directly to X (Twitter), WhatsApp, or Facebook!
