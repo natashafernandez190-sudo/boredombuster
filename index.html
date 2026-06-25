@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO OPTIMIZATION: Keyword-Rich Title & Meta Description -->
+    <title>BoredomBuster - Instant Fun, Cat Facts, Dog Quotes & Supercars</title>
+    <meta name="description" content="Kill boredom instantly with BoredomBuster! Generate random cat facts, wholesome dog quotes, stunning supercar images, and interactive trivia games to boost your dopamine.">
+    <meta name="keywords" content="boredom busters, random generator, dynamic dashboard, fun cat facts, cute dog quotes, supercar pictures, online trivia games, quick entertainment">
+    
+    <!-- Open Graph Meta Tags for Better Social Sharing Performance -->
+    <meta property="og:title" content="BoredomBuster - Ultimate Instant Boredom Killer App">
+    <meta property="og:description" content="Generate daily dopamine with fun facts, cute animals, supercars, and brain-teasing trivia quizzes instantly.">
+    <meta property="og:type" content="website">
+
+    <style>
+        :root {
+            --bg: #07070a;
+            --surface: #111118;
+            --border: #1f1f2e;
+            --neon-cyan: #00f2fe;
+            --neon-pink: #fe019a;
+            --neon-purple: #7928ca;
+            --neon-green: #00c851;
+            --text: #ffffff;
+            --text-muted: #7e7e96;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            padding-bottom: 3rem;
+        }
+
+        /* ANIMATED MARQUEE HEADER */
+        header {
+            text-align: center;
+            padding: 1.5rem 1rem 1rem 1rem;
+            position: relative;
+            width: 100%;
+            background: radial-gradient(circle at top, rgba(0, 242, 254, 0.12) 0%, transparent 70%);
+            overflow: hidden;
+            border-bottom: 1px solid rgba(31, 31, 46, 0.5);
+        }
+
+        .marquee-container {
+            position: absolute;
+            top: 15%;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0.15;
+            display: flex;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 3rem;
+            animation: marqueeScroll 25s linear infinite;
+            font-size: 1.8rem;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+            margin-bottom: 0.2rem;
+        }
+
+        /* SEO Subtitle element */
+        .seo-tagline {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* 4-Way Tab Layout Grid */
+        .tab-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.4rem;
+            width: 90%;
+            max-width: 500px;
+            background: #141420;
+            padding: 0.4rem;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            margin: 1rem 0;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.5rem 0.2rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: 9px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            color: #ffffff;
+        }
+
+        /* Main View Window Frame */
+        .stage {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            min-height: 310px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .panel {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Compact Onboarding Screen Layout */
+        .welcome-screen {
+            text-align: left;
+            width: 100%;
+        }
+
+        .welcome-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+            text-align: center;
+        }
+
+        .welcome-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-item {
+            background: rgba(31, 31, 46, 0.3);
+            padding: 0.5rem 0.8rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.01);
+        }
+
+        .feature-icon {
+            font-size: 1.1rem;
+        }
+
+        .feature-text strong {
+            color: var(--neon-cyan);
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        .feature-text p {
+            color: #b3b3cc;
+            font-size: 0.78rem;
+            display: inline;
+        }
+
+        /* Arrow Indicator Layout */
+        .guide-arrow-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 0.4rem;
+            width: 100%;
+        }
+        
+        .guide-text {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--neon-pink);
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+
+        .arrow-svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--neon-pink);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: bounceArrow 1.2s infinite alternate;
+        }
+
+        @keyframes bounceArrow {
+            0% { transform: translateY(0); opacity: 0.6; }
+            100% { transform: translateY(5px); opacity: 1; }
+        }
+
+        /* Flexible Height Image Frame Container */
+        .media-box {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            background: #09090d;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-box img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .text-caption {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #e2e2ee;
+            font-style: italic;
+            padding: 0 0.5rem;
+        }
+
+        /* Trivia Sizing Layout */
+        .large-bold-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .trivia-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            width: 100%;
+        }
+
+        .option-btn {
+            background: #181826;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.55rem 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.82rem;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover { border-color: var(--neon-cyan); }
+
+        /* Social Share Actions Bar */
+        .share-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 1rem;
+            opacity: 0.15;
+            transition: opacity 0.3s ease;
+        }
+
+        .share-container.active { opacity: 1; }
+        .share-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+        .share-btn {
+            padding: 0.35rem 0.7rem;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .share-tw { background: #000000; border: 1px solid #333; }
+        .share-wa { background: #25D366; }
+        .share-fb { background: #1877F2; }
+
+        /* Core Execution Action Button */
+        .trigger-action-btn {
+            width: 90%;
+            max-width: 500px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            color: white;
+            border: none;
+            padding: 0.95rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Instructions Layout */
+        .instructions-wrapper {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 1rem;
+        }
+
+        .instructions-header {
+            background: #161622;
+            border: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+        }
+
+        .instructions-content {
+            background: rgba(22, 22, 34, 0.4);
+            border: 1px solid var(--border);
+            border-top: none;
+            padding: 1rem;
+            border-radius: 0 0 10px 10px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            display: none;
+        }
+
+        .instructions-content ul { margin-left: 1.1rem; margin-top: 0.3rem; }
+        .instructions-content li { margin-bottom: 0.3rem; }
+
+        /* SEO CONTENT MARKETING SECTION CARD */
+        .seo-marketing-section {
+            width: 90%;
+            max-width: 500px;
+            margin-top: 2.5rem;
+            background: rgba(17, 17, 24, 0.6);
+            border: 1px solid rgba(31, 31, 46, 0.6);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .seo-marketing-section h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.2px;
+        }
+
+        .seo-marketing-section p {
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: #a3a3c2;
+            margin-bottom: 1rem;
+        }
+
+        .seo-keywords-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .keyword-badge {
+            background: #141420;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .loader {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid var(--neon-cyan);
+            width: 35px;
+            height: 35px;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER BLOCK WITH ANIMATED TRACK MARQUEE & SEO TAGLINE -->
+    <header>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠
+            </div>
+            <div class="marquee-track">
+                🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠 🐱 🏎️ 🐶 🧠
+            </div>
+        </div>
+        <h1>BoredomBuster</h1>
+        <div class="seo-tagline">Your Instant Random Generator App</div>
+    </header>
+
+    <!-- Navigation Control Grid Layout -->
+    <nav class="tab-grid" aria-label="Content Categories">
+        <button class="tab-btn active" onclick="switchEngineMode(event, 'cat')">🐱 Cats</button>
+        <button class="tab-btn" onclick="switchEngineMode(event, 'dog')">🐶 Dogs</button>
+        <button class="tab-btn" onclick="switchEngineMode(event, 'car')">🏎️ Cars</button>
+        <button class="tab-btn" onclick="switchEngineMode(event, 'trivia')">🧠 Trivia</button>
+    </nav>
+
+    <!-- Main Output Stage -->
+    <div class="stage">
+        <div class="loader" id="loader"></div>
+
+        <!-- LIGHTWEIGHT ONBOARDING UI PANEL -->
+        <div id="placeholder" class="welcome-screen">
+            <h2 class="welcome-title">Welcome to the Dashboard!</h2>
+            <p class="welcome-desc">Your ultimate tool to kill boredom instantly. Here is what you can discover right now:</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="feature-icon">🐱</span>
+                    <div class="feature-text">
+                        <strong>Cats & Facts:</strong><p>See cute cat photos alongside surprising real-world facts.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🐶</span>
+                    <div class="feature-text">
+                        <strong>Dogs & Quotes:</strong><p>Get instant good vibes with adorable dog images and wholesome quotes.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏎️</span>
+                    <div class="feature-text">
+                        <strong>Supercars:</strong><p>Check out stunning, high-performance track machines and sports cars.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧠</span>
+                    <div class="feature-text">
+                        <strong>Trivia Arena:</strong><p>Test your brain with fun questions and interactive options.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-arrow-box">
+                <span class="guide-text">Click the generate button below</span>
+                <svg class="arrow-svg" viewBox="0 0 24 24">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- UNIVERSAL TEXT AND MEDIA PANELS -->
+        <div id="image-view-panel" class="panel">
+            <div class="media-box">
+                <img id="display-frame-img" src="" alt="Dynamic Content Display Box">
+            </div>
+            <p id="display-frame-caption" class="text-caption"></p>
+        </div>
+
+        <div id="trivia-view-panel" class="panel">
+            <p id="trivia-question-body" class="large-bold-text"></p>
+            <div id="trivia-options-grid" class="trivia-options"></div>
+        </div>
+    </div>
+
+    <!-- AUTOMATED SHARE ACTIONS -->
+    <div id="share-bar" class="share-container">
+        <span class="share-label">Share:</span>
+        <a id="share-tw-btn" href="#" target="_blank" class="share-btn share-tw">X</a>
+        <a id="share-wa-btn" href="#" target="_blank" class="share-btn share-wa">WhatsApp</a>
+        <a id="share-fb-btn" href="#" target="_blank" class="share-btn share-fb">Facebook</a>
+    </div>
+
+    <!-- MAIN INTERACTIVE TRIGGER ACTION BUTTON -->
+    <button class="trigger-action-btn" onclick="fireEngine()">Generate Dopamine</button>
+
+    <!-- How to Use Drawer Panel Element -->
+    <div class="instructions-wrapper">
+        <div class="instructions-header" onclick="toggleInstructions()">
+            <span>📖 How to Use & Share Content</span>
+            <span id="accordion-arrow">▼</span>
+        </div>
+        <div id="instructions-box" class="instructions-content">
+            <strong>Instant Entertainment Guide:</strong>
+            <ul>
+                <li>Select any category tab above (Cats, Dogs, Cars, or Trivia).</li>
+                <li>Click the massive <strong>"Generate Dopamine"</strong> button to instantly view content blocks.</li>
+                <li><strong>Share Instantly:</strong> Tap any of the social network buttons above to format custom posts for your feeds!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SEO STRATEGY ADDITION: Semantic content box targeting crawler search query engines -->
+    <section class="seo-marketing-section">
+        <h2>About BoredomBuster Random Feed Tool</h2>
+        <p>Looking for quick ways to beat boredom online? BoredomBuster is an interactive dynamic dashboard designed to deliver instant entertainment. Whether you want to learn funny cat facts, view heartwarming dog images and quotes, look up exotic supercars, or test your intelligence with a random quiz, our tool fetches fresh dynamic content continuously.</p>
+        
+        <h2>Why Use a Random Generator Tool?</h2>
+        <p>Micro-breaks help refresh focus. Instead of scrolling endlessly through algorithmic timelines, generate targeted streams of specific categories with a simple tap. Perfect for quick entertainment, social sharing, and daily trivial facts discovery.</p>
+        
+        <div class="seo-keywords-cluster">
+            <span class="keyword-badge">#BoredomBusters</span>
+            <span class="keyword-badge">#RandomCatFacts</span>
+            <span class="keyword-badge">#DogQuotes</span>
+            <span class="keyword-badge">#SupercarPhotos</span>
+            <span class="keyword-badge">#OnlineTrivia</span>
+        </div>
+    </section>
+
+    <script>
+        let selectedMode = 'cat';
+        let shareMessageString = "Check out this app!";
+
+        function getRandomLockToken() { return Math.floor(Math.random() * 100000); }
+
+        function toggleInstructions() {
+            const box = document.getElementById('instructions-box');
+            const arrow = document.getElementById('accordion-arrow');
+            if(box.style.display === 'block') {
+                box.style.display = 'none';
+                arrow.innerText = '▼';
+            } else {
+                box.style.display = 'block';
+                arrow.innerText = '▲';
+            }
+        }
+
+        function switchEngineMode(e, mode) {
+            selectedMode = mode;
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(t => t.classList.remove('active'));
+            if(e && e.target) e.target.classList.add('active');
+
+            document.getElementById('placeholder').style.display = 'block';
+            document.getElementById('share-bar').classList.remove('active');
+            const panels = document.querySelectorAll('.panel');
+            panels.forEach(p => p.classList.remove('active'));
+        }
+
+        function fireEngine() {
+            document.getElementById('placeholder').style.display = 'none';
+            document.getElementById('share-bar').classList.remove('active');
+            const panels = document.querySelectorAll('.panel');
+            panels.forEach(p => p.classList.remove('active'));
+
+            toggleSpinner(true);
+
+            if(selectedMode === 'cat') fetchCatContent();
+            else if(selectedMode === 'dog') fetchDogContent();
+            else if(selectedMode === 'car') fetchCarContent();
+            else if(selectedMode === 'trivia') fetchTriviaContent();
+        }
+
+        function toggleSpinner(status) {
+            document.getElementById('loader').style.display = status ? 'block' : 'none';
+        }
+
+        function activateSharing(message) {
+            shareMessageString = message;
+            const currentURL = window.location.href;
+            document.getElementById('share-tw-btn').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessageString + " " + currentURL)}`;
+            document.getElementById('share-wa-btn').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareMessageString + " " + currentURL)}`;
+            document.getElementById('share-fb-btn').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}`;
+            document.getElementById('share-bar').classList.add('active');
+        }
+
+        async function fetchCatContent() {
+            try {
+                const imgRes = await fetch('https://api.thecatapi.com/v1/images/search');
+                const imgData = await imgRes.json();
+                const factRes = await fetch('https://catfact.ninja/fact');
+                const factData = await factRes.json();
+
+                document.getElementById('display-frame-img').src = imgData[0].url;
+                document.getElementById('display-frame-caption').innerText = factData.fact;
+
+                toggleSpinner(false);
+                document.getElementById('image-view-panel').classList.add('active');
+                activateSharing(`🐱 Cat Fact: "${factData.fact}"`);
+            } catch(e) { handleNetworkFault(); }
+        }
+
+        async function fetchDogContent() {
+            try {
+                const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
+                const imgData = await imgRes.json();
+                const quotes = [
+                    "A dog is the only thing on earth that loves you more than he loves himself.",
+                    "In the history of the world, there has never been a better backup plan than a dog.",
+                    "Always look this fabulous, no exceptions."
+                ];
+                const selectedQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+                document.getElementById('display-frame-img').src = imgData.message;
+                document.getElementById('display-frame-caption').innerText = selectedQuote;
+
+                toggleSpinner(false);
+                document.getElementById('image-view-panel').classList.add('active');
+                activateSharing("🐶 Wholesome doggo alert! Check it out:");
+            } catch(e) { handleNetworkFault(); }
+        }
+
+        function fetchCarContent() {
+            const token = getRandomLockToken();
+            const carQuotes = [
+                "🏎️ Horsepower is how fast you hit the wall. Torque is how far you take the wall with you.",
+                "🏎️ Carbon fiber accents, tuned exhaust systems, and perfect aerodynamics.",
+                "🏎️ Zero to sixty real quick. Speed is a question of design and attitude."
+            ];
+            const textOverlay = carQuotes[Math.floor(Math.random() * carQuotes.length)];
+            
+            document.getElementById('display-frame-img').src = `https://loremflickr.com/600/450/cars,supercar?lock=${token}`;
+            document.getElementById('display-frame-caption').innerText = textOverlay;
+
+            setTimeout(() => {
+                toggleSpinner(false);
+                document.getElementById('image-view-panel').classList.add('active');
+                activateSharing(`🔥 Supercar Concept Engine: "${textOverlay}"`);
+            }, 650);
+        }
+
+        async function fetchTriviaContent() {
+            try {
+                const res = await fetch('https://opentdb.com/api.php?amount=1&type=multiple');
+                const data = await res.json();
+                const q = data.results[0];
+
+                document.getElementById('trivia-question-body').innerHTML = q.question;
+
+                let options = [...q.incorrect_answers];
+                const randPos = Math.floor(Math.random() * (options.length + 1));
+                options.splice(randPos, 0, q.correct_answer);
+
+                const box = document.getElementById('trivia-options-grid');
+                box.innerHTML = '';
+
+                options.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.innerHTML = opt;
+                    btn.onclick = function() {
+                        if(opt === q.correct_answer) {
+                            btn.style.background = '#00c851';
+                            btn.style.borderColor = '#00c851';
+                        } else {
+                            btn.style.background = '#ff3547';
+                            btn.style.borderColor = '#ff3547';
+                        }
+                    };
+                    box.appendChild(btn);
+                });
+
+                toggleSpinner(false);
+                document.getElementById('trivia-view-panel').classList.add('active');
+                activateSharing(`🧠 Quick Trivia Challenge: "${q.question}"`);
+            } catch(e) { handleNetworkFault(); }
+        }
+
+        function handleNetworkFault() {
+            toggleSpinner(false);
+            const p = document.getElementById('placeholder');
+            p.style.display = 'block';
+            p.innerText = "Data stream network sync failed. Fire the engine again!";
+        }
+    </script>
+</body>
+</html>
