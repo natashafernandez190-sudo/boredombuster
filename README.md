@@ -2,7 +2,7 @@
 A sleek, cyber-themed interactive dashboard designed to kill boredom instantly. Features real-time data pipelines for random cat facts, memes, supercars, and interactive trivia quizzes.
 # 🐱 BoredomBuster V2 - Instant Random Content Node Dashboard
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live%20Web%20App-00f2fe?style=for-the-badge)]()
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20Web%20App-00f2fe?style=for-the-badge)](https://natashafernandez190-sudo.github.io/boredombuster/)
 
 **BoredomBuster V2** is a lightweight, responsive, and completely interactive Single Page Application (SPA) designed to cure online boredom instantly. Built with a sleek cyber-inspired terminal theme, this dynamic dashboard connects directly to live public data nodes to stream fresh entertainment on demand, saving you from endless algorithmic feed scrolling.
 
